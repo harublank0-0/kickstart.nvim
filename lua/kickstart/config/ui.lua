@@ -40,6 +40,8 @@ require('gitsigns').setup {
   },
 }
 
+vim.opt.scrolloff = 8
+
 -- useful plugin to fold code
 vim.pack.add {
   { src = 'https://github.com/kevinhwang91/promise-async' },
