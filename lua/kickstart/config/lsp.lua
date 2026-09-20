@@ -30,7 +30,7 @@ local gh = require('utils.helpers').gh
 -- and elegantly composed help section, `:help lsp-vs-treesitter`
 
 -- Useful for LLM and code completion
-vim.pack.add { gh 'Exafunction/windsurf.vim' }
+-- vim.pack.add { gh 'Exafunction/windsurf.vim' }
 -- Useful status updates for LSP.
 vim.pack.add { gh 'j-hui/fidget.nvim' }
 require('fidget').setup {}

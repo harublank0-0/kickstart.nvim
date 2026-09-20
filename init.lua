@@ -84,59 +84,54 @@ I hope you enjoy your Neovim journey,
 P.S. You can delete this when you're done too. It's your config now! :)
 --]]
 
-
 vim.loader.enable()
 -- ============================================================
 -- SECTION 1: FOUNDATION
 -- Core Neovim settings, leaders, options, basic keymaps, basic autocmds
 -- ============================================================
-require "kickstart.config.foundation"
+require 'kickstart.config.foundation'
 
 -- ============================================================
 -- SECTION 2: PLUGIN MANAGER INTRO
 -- vim.pack intro, build hooks
 -- ============================================================
 -- ============================================================
-require "kickstart.config.plugin_manager"
+require 'kickstart.config.plugin_manager'
 
 -- SECTION 3: UI / CORE UX PLUGINS
 -- guess-indent, gitsigns, which-key, colorscheme, todo-comments, mini modules
 -- ============================================================
-require "kickstart.config.ui"
+require 'kickstart.config.ui'
 
 -- ============================================================
 -- SECTION 4: SEARCH & NAVIGATION
 -- Telescope setup, keymaps, LSP picker mappings
 -- ============================================================
-require "kickstart.config.search_navigation"
-
+require 'kickstart.config.search_navigation'
 
 -- ============================================================
 -- SECTION 5: LSP
 -- LSP keymaps, server configuration, Mason tools installations
 -- ============================================================
-require "kickstart.config.lsp"
-
+require 'kickstart.config.lsp'
 
 -- ============================================================
 -- SECTION 6: FORMATTING
 -- conform.nvim setup and keymap
 -- ============================================================
-require "kickstart.config.formatting"
-
+require 'kickstart.config.formatting'
 
 -- ============================================================
 -- SECTION 7: AUTOCOMPLETE & SNIPPETS
 -- blink.cmp and luasnip setup
 -- ============================================================
-require "kickstart.config.autocomplete"
-
+require 'kickstart.config.autocomplete'
 
 -- ============================================================
 -- SECTION 8: TREESITTER
 -- Parser installation, syntax highlighting, folds, indentation
 -- ============================================================
-require "kickstart.config.treesitter"
+require 'kickstart.config.treesitter'
 
 -- ============================================================
 -- SECTION 9: OPTIONAL EXAMPLES / NEXT STEPS
@@ -158,7 +153,9 @@ do
   require 'kickstart.plugins.autopairs'
   require 'kickstart.plugins.neo-tree'
   require 'kickstart.plugins.gitsigns' -- adds gitsigns recommended keymaps
+  require 'kickstart.plugins.claude'
 
+  require 'kickstart.plugins.render-markdown'
   -- NOTE: You can add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
