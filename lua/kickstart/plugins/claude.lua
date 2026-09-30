@@ -40,8 +40,8 @@ require('claudecode').setup {
     -- Put Claude on the right side of the editor.
     split_side = 'right',
 
-    -- Terminal takes 30% of the editor width.
-    split_width_percentage = 0.30,
+    -- Terminal takes 35% of the editor width.
+    split_width_percentage = 0.35,
 
     -- Use Snacks for the terminal UI.
     provider = 'snacks',
@@ -59,14 +59,8 @@ require('claudecode').setup {
     -- Environment variables passed to Claude.
     env = {},
 
-    -- Floating window configuration for Snacks.
+    -- Keep custom Snacks keys; use the split layout configured above.
     snacks_win_opts = {
-      position = 'float',
-      width = 0.85,
-      height = 0.85,
-      border = 'rounded',
-      backdrop = 60,
-
       keys = {
         -- Hide Claude with Ctrl+,
         claude_hide = {
