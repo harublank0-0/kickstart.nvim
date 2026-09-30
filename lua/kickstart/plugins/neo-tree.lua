@@ -8,7 +8,7 @@ local plugins = {
 }
 
 if vim.g.have_nerd_font then
-  table.insert(plugins, 'https://github.com/nvim-tree/nvim-web-devicons') -- not strictly required, but recommended
+  table.insert(plugins, 'https://github.com/DaikyXendo/nvim-material-icon') -- not strictly required, but recommended
 end
 
 vim.pack.add(plugins)

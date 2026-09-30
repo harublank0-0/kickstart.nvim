@@ -21,9 +21,11 @@ require('guess-indent').setup {}
 -- Because lua is a real programming language, you can also have some logic to your installation -
 -- like only installing a plugin if a condition is met.
 --
--- Here we only install `nvim-web-devicons` (which adds pretty icons) if we have a Nerd Font,
--- since otherwise the icons won't display properly.
-if vim.g.have_nerd_font then vim.pack.add { gh 'nvim-tree/nvim-web-devicons' } end
+-- Material file icons use the nvim-web-devicons API and require Nerd Font >= 3.2.
+if vim.g.have_nerd_font then
+  vim.pack.add { gh 'DaikyXendo/nvim-material-icon' }
+  require('nvim-web-devicons').setup { default = true }
+end
 
 -- Here is a more advanced configuration example that passes options to `gitsigns.nvim`
 --
