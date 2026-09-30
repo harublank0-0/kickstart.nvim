@@ -155,6 +155,7 @@ do
   require 'kickstart.plugins.gitsigns' -- adds gitsigns recommended keymaps
   require 'kickstart.plugins.diffview'
   require 'kickstart.plugins.octo'
+  require 'kickstart.plugins.productivity'
   require 'kickstart.plugins.claude'
   require 'kickstart.plugins.codex'
 

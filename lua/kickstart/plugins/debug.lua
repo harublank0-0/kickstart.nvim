@@ -1,10 +1,4 @@
--- debug.lua
---
--- Shows how to use the DAP plugin to debug your code.
---
--- Primarily focused on configuring the debugger for Go, but can
--- be extended to other languages as well. That's why it's called
--- kickstart.nvim and not kitchen-sink.nvim ;)
+-- Debugging for Go and Node.js (JavaScript / TypeScript).
 
 vim.pack.add {
   'https://github.com/mfussenegger/nvim-dap',
@@ -27,6 +21,48 @@ vim.keymap.set('n', '<F7>', function() require('dapui').toggle() end, { desc = '
 
 local dap = require 'dap'
 local dapui = require 'dapui'
+
+-- Mason installs Microsoft's standalone JavaScript debug adapter.
+dap.adapters['pwa-node'] = {
+  type = 'server',
+  host = '127.0.0.1',
+  port = '${port}',
+  executable = {
+    command = vim.fn.stdpath 'data' .. '/mason/bin/js-debug-adapter',
+    args = { '${port}', '127.0.0.1' },
+  },
+}
+
+for _, filetype in ipairs { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' } do
+  dap.configurations[filetype] = {
+    {
+      name = 'Node.js: Attach to backend (Next.js / AdonisJS)',
+      type = 'pwa-node',
+      request = 'attach',
+      address = '127.0.0.1',
+      port = function()
+        local port = tonumber(vim.fn.input('Node inspector port: ', '9229'))
+        if not port or port < 1 or port > 65535 or port % 1 ~= 0 then return dap.ABORT end
+        return port
+      end,
+      cwd = '${workspaceFolder}',
+      sourceMaps = true,
+      skipFiles = { '<node_internals>/**' },
+      restart = true,
+      autoAttachChildProcesses = true,
+    },
+  }
+end
+
+require('which-key').add {
+  { '<leader>d', group = 'Debug' },
+}
+vim.keymap.set('n', '<leader>dc', dap.continue, { desc = 'Debug: Start / continue' })
+vim.keymap.set('n', '<leader>dn', dap.step_over, { desc = 'Debug: Step over' })
+vim.keymap.set('n', '<leader>di', dap.step_into, { desc = 'Debug: Step into' })
+vim.keymap.set('n', '<leader>do', dap.step_out, { desc = 'Debug: Step out' })
+vim.keymap.set({ 'n', 'v' }, '<leader>de', function() dapui.eval() end, { desc = 'Debug: Inspect expression' })
+vim.keymap.set('n', '<leader>dq', function() dap.disconnect { terminateDebuggee = false } end, { desc = 'Debug: Detach, keep server running' })
 
 require('mason-nvim-dap').setup {
   -- Makes a best effort to setup the various debuggers with

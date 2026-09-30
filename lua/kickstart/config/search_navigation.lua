@@ -131,3 +131,11 @@ vim.keymap.set(
 
 -- Shortcut for searching your Neovim configuration files
 vim.keymap.set('n', '<leader>sn', function() builtin.find_files { cwd = vim.fn.stdpath 'config' } end, { desc = '[S]earch [N]eovim files' })
+
+vim.keymap.set('n', '<leader>sH', function()
+  builtin.find_files {
+    cwd = vim.fn.stdpath 'config' .. '/doc',
+    prompt_title = 'My Neovim Guides',
+    find_command = { 'rg', '--files', '--glob', '*.md' },
+  }
+end, { desc = '[S]earch personal [H]elp guides' })

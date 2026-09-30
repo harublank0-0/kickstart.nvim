@@ -34,6 +34,7 @@ require('conform').setup {
   },
   -- You can also specify external formatters in here.
   formatters_by_ft = {
+    lua = { 'stylua' },
     -- rust = { 'rustfmt' },
     -- Conform can also run multiple formatters sequentially
     python = { 'isort', 'black' },
@@ -47,4 +48,9 @@ require('conform').setup {
   },
 }
 
-vim.keymap.set({ 'n', 'v' }, '<leader>f', function() require('conform').format { async = true, lsp_format = project_tools.detect(0, { 'biome', 'prettier' }) and 'never' or 'fallback' } end, { desc = '[F]ormat buffer' })
+vim.keymap.set(
+  { 'n', 'v' },
+  '<leader>f',
+  function() require('conform').format { async = true, lsp_format = project_tools.detect(0, { 'biome', 'prettier' }) and 'never' or 'fallback' } end,
+  { desc = '[F]ormat buffer' }
+)
